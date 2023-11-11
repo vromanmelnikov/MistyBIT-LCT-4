@@ -1,0 +1,17 @@
+TOKEN_INVALID_SCOPE = "Область действия токена недействительна"
+RESET_EMAIL_SUCCESS = "Email успешно сменен"
+RESET_EMAIL_FAILED = "Email не удалось сменить"
+GET_USER_BY_ID_EXCEPTION = "Не удалось получить пользователя"
+REGISTATION_SUCCESS = "Регистрация прошла успешно!"
+GRADES_NOT_FOUND = "Грейды не найдены"
+ROLES_NOT_FOUND = "Роли не найдены"
+
+OBJECTS_NOT_FOUND = "Объекты не найдены"
+OBJECT_NOT_FOUND = "Объект не найден"
+OBJECT_DELETE_SUCCESS = "Объект успешно удален!"
+OBJECT_DELETE_FAILED = "Ошибка удаления объекта"
+OBJECT_ADD_SUCCESS = "Объект успешно добавлен!"
+OBJECT_ADD_FAILED = "Ошибка добавления объекта"
+OBJECT_UPDATE_SUCCESS = "Объект успешно обновлен!"
+OBJECT_UPDATE_FAILED = "Ошибка обновления объекта"
+IMG_USER_DELETED='Картинка профиля удалена!'

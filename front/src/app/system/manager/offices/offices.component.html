@@ -1,0 +1,7 @@
+<main class="card">
+    <span class="card-title">Управление офисами</span>
+    <button mat-raised-button color="primary" style="margin-bottom: 1rem;" (click)="add()"><mat-icon>add</mat-icon></button>
+    <mat-accordion>
+        <app-office (onDelete)="onDelete($event)" [office]="office" (onOfficeChange)="onOfficeChange($event)" *ngFor="let office of offices"></app-office>
+    </mat-accordion>
+</main>

@@ -1,0 +1,8 @@
+<section>
+    <div class="photo" id="profile-photo" [ngStyle]="{'background-image':image !== '' ? image : '' }"></div>
+    <div class="buttons">
+        <button mat-raised-button color="primary" (click)="chooseFile()">Загрузить фото</button>
+        <input type="file" id="image-input" style="display: none;" (change)="onFileChange($event)" accept="image/*"/>
+        <button mat-stroked-button color="primary">Удалить фото</button>
+    </div>
+</section>

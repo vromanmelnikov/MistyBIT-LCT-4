@@ -1,0 +1,106 @@
+<h1 mat-dialog-title>Изменение информации о пользователе</h1>
+<mat-dialog-content>
+  <mat-stepper [linear]="true" #stepper>
+    <mat-step label="Основная информация" [editable]="true">
+      <form [formGroup]="form" class="form">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Почта</mat-label>
+          <input
+            matInput
+            placeholder="ivanov@mail.ru"
+            formControlName="email"
+          />
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Фамилия</mat-label>
+          <input matInput placeholder="Иванов" formControlName="lastname" />
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Имя</mat-label>
+          <input matInput placeholder="Иван" formControlName="firstname" />
+        </mat-form-field>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Отчество</mat-label>
+          <input matInput placeholder="Иванович" formControlName="patronymic" />
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Роль</mat-label>
+          <mat-select formControlName="grade" [(ngModel)]="selectedRole">
+            <mat-option *ngFor="let role of allRoles" value="{{ role.name }}">{{
+              role.name
+            }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </form>
+      <div class="current-task__btns">
+        <button
+          *ngIf="selectedRole !== 'Менеджер'"
+          mat-raised-button
+          color="primary"
+          matStepperNext
+          [disabled]="selectedRole == null"
+        >
+          Далее
+        </button>
+        <button
+          *ngIf="selectedRole === 'Менеджер'"
+          mat-raised-button
+          color="primary"
+          (click)="registation()"
+          class="success"
+        >
+          Регистрация
+        </button>
+      </div>
+    </mat-step>
+    <mat-step
+      *ngIf="selectedRole === 'Сотрудник'"
+      label="Выполнение"
+      [editable]="selectedRole != null"
+    >
+      <form
+        *ngIf="selectedRole === 'Сотрудник'"
+        [formGroup]="form"
+        class="form"
+      >
+        <mat-form-field appearance="fill">
+          <mat-label>Грейд</mat-label>
+          <mat-select formControlName="grade">
+            <mat-option
+              *ngFor="let grade of allGrades"
+              value="{{ grade.name }}"
+              >{{ grade.name }}</mat-option
+            >
+            <!-- <mat-option value="two">Second option</mat-option> -->
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Офис</mat-label>
+          <mat-select formControlName="office">
+            <mat-option
+              *ngFor="let office of allOffices"
+              value="{{ office.address }}"
+              >{{ office.address }}</mat-option
+            >
+            <!-- <mat-option value="two">Second option</mat-option> -->
+          </mat-select>
+        </mat-form-field>
+      </form>
+      <div class="current-task__btns">
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="registation()"
+          class="success"
+        >
+          Регистрация
+        </button>
+      </div>
+    </mat-step>
+  </mat-stepper>
+</mat-dialog-content>
+<!-- <div mat-dialog-actions class="actions">
+  <button mat-raised-button color="primary" (click)="onNoClick()">
+    Сохранить
+  </button>
+</div> -->

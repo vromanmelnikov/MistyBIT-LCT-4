@@ -1,0 +1,28 @@
+<form [formGroup]="infoFormGroup">
+
+  <mat-form-field class="field">
+    <mat-label>Фамилия</mat-label>
+    <input matInput placeholder="Иванов" formControlName="lastname"/>
+  </mat-form-field>
+  <mat-form-field class="field">
+    <mat-label>Имя</mat-label>
+    <input matInput placeholder="Иван" formControlName="firstname"/>
+  </mat-form-field>
+  <mat-form-field class="field">
+    <mat-label>Отчество</mat-label>
+    <input matInput placeholder="Иванович" formControlName="patronymic"/>
+  </mat-form-field>
+  <mat-form-field class="field">
+    <mat-label>Почта</mat-label>
+    <input
+      matInput
+      placeholder="ivanov@mail.ru" 
+      [attr.disabled]="true"
+      formControlName="email"
+    />
+  </mat-form-field>
+  <button class="field" mat-raised-button color="primary" (click)="changeProfile()">Сохранить</button>
+  <button class="field" mat-raised-button color="primary" (click)="changePassword()">Сменить пароль</button>
+  
+  <a href="https://t.me/branchlessEmployeeBot" target="_blank">Перейти в Телеграм-бота!</a>
+</form>

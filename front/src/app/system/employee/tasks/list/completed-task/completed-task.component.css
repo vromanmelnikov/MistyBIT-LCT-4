@@ -1,0 +1,14 @@
+.completed {
+    background-color: rgb(235, 235, 235);
+}
+
+.stars {
+    display: flex;
+    flex-direction: row;
+    gap: .2rem;
+    align-items: center;
+}
+
+.star {
+    width: 1.5rem;
+}

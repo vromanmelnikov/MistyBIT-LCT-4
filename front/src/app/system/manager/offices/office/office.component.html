@@ -1,0 +1,28 @@
+<mat-expansion-panel
+  (opened)="panelOpenState = true"
+  (closed)="panelOpenState = false"
+>
+  <mat-expansion-panel-header>
+    <mat-panel-title> {{office.address}} </mat-panel-title>
+    <mat-panel-description>
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+
+  <div *ngIf="changing === false" class="actions">
+    <button mat-raised-button (click)="changing = !changing" color="primary">Изменить адрес</button>
+    <button mat-raised-button (click)="deleteOffice()" color="warn">Удалить офис</button>
+  </div>
+
+  <form [formGroup]="form" *ngIf="changing">
+    <mat-form-field class="example-full-width field" appearance="fill">
+      <mat-label>Адрес</mat-label>
+      <input matInput placeholder="" formControlName="address" />
+    </mat-form-field>
+  </form>
+
+  <div *ngIf="changing" class="actions">
+    <button mat-raised-button (click)="changeAddress()" color="primary">Изменить адрес</button>
+  </div>
+  
+</mat-expansion-panel>
+

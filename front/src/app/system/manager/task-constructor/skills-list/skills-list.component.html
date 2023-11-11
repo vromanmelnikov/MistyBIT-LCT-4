@@ -1,0 +1,6 @@
+<div class="skills">
+  <div class="skill" *ngFor="let skill of allSkills">
+    <p>{{ skill.name }}</p>
+    <button class="delete-icon" mat-raised-button color="warn" (click)="deleteSkill(skill)"><mat-icon>close</mat-icon></button>
+  </div>
+</div>

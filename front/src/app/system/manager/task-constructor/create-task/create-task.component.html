@@ -1,0 +1,68 @@
+<form [formGroup]="form" class="form">
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Название задачи</mat-label>
+    <input
+      matInput
+      placeholder="Доставка карт и материалов"
+      formControlName="name"
+    />
+  </mat-form-field>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Продолжительность задачи</mat-label>
+    <input
+      matInput
+      placeholder="3"
+      formControlName="duration"
+      type="number"
+      min="0"
+    />
+  </mat-form-field>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Интервал назначения задачи в днях</mat-label>
+    <input
+      matInput
+      placeholder="4"
+      formControlName="interval_block"
+      type="number"
+      min="0"
+    />
+  </mat-form-field>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Приоритет</mat-label>
+    <mat-select formControlName="priority">
+      <mat-option *ngFor="let priority of allPriorites" [value]="JSONtoString(priority)">
+        {{ priority.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Грейды</mat-label>
+    <mat-select [formControl]="grades" multiple>
+      <mat-select-trigger>
+        {{grades.value ? grades.value[0] : ''}}
+        <span *ngIf="grades.value?.length > 1" class="example-additional-selection">
+          (+{{grades.value.length - 1}} {{grades.value?.length === 2 ? 'other' : 'others'}})
+        </span>
+      </mat-select-trigger>
+      <mat-option *ngFor="let grade of allGrades" [value]="grade.name">{{grade.name}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</form>
+
+<div class="conditions">
+  <app-condition
+    *ngFor="let condition of conditions; index as i"
+    [index]="i"
+    [condition]="condition"
+    (onConditionAdd)="onConditionAdd($event)"
+  ></app-condition>
+</div>
+
+<div class="buttons">
+  <button mat-raised-button color="primary" (click)="addCondition()">
+    Добавить условие
+  </button>
+  <button mat-raised-button class="success" (click)="createTask()">
+    Сохранить задачу
+  </button>
+</div>

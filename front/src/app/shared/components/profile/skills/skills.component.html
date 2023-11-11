@@ -1,0 +1,31 @@
+<div class="skills-block">
+  <mat-form-field class="container" appearance="fill">
+    <mat-label>Настройте Ваши навыки</mat-label>
+    <mat-chip-list #chipList aria-label="Skills selection">
+      <mat-chip *ngFor="let skill of skills" (removed)="remove(skill.id)">
+        {{ skill.name }}
+        <button matChipRemove>
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </mat-chip>
+      <input
+        placeholder="Новые навыки..."
+        #skillsInput
+        [formControl]="skillsCtrl"
+        [matAutocomplete]="auto"
+        [matChipInputFor]="chipList"
+        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+        (matChipInputTokenEnd)="add($event)"
+      />
+    </mat-chip-list>
+    <mat-autocomplete
+      #auto="matAutocomplete"
+      (optionSelected)="selected($event)"
+    >
+      <mat-option *ngFor="let skill of filteredSkills | async" [value]="skill">
+        {{ skill.name }}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+  <app-grade></app-grade>
+</div>

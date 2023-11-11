@@ -1,0 +1,18 @@
+<mat-expansion-panel
+  class="completed"
+  (opened)="panelOpenState = true"
+  (closed)="panelOpenState = false"
+>
+  <mat-expansion-panel-header>
+    <mat-panel-title style="font-weight: 500">
+      {{ item.point.address }}
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+
+  <p>Задача: {{ item.type.name }}</p>
+
+  <span class="stars">
+    <img *ngFor="let item of fulledStars" class="star" src="../../../../../../../assets/fulled_star.png" />
+    <img *ngFor="let item of stars" class="star" src="../../../../../../../assets/star.png" />
+  </span>
+</mat-expansion-panel>

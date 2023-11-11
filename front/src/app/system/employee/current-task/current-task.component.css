@@ -1,0 +1,42 @@
+.current-task {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.button {
+  float: right;
+}
+
+.success {
+  background-color: #4dc404;
+  color: white;
+}
+
+.current-task__btns {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.question {
+  margin: 1rem 0 !important;
+  text-align: center;
+}
+
+@media (max-width: 600px){
+  .mat-stepper-vertical {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+}
+
+@media (max-width: 500px){
+  .current-task__btns{
+    flex-direction: column;
+    width: 80%;
+    margin: 0 auto;
+    gap: 1rem;
+  }
+}
+

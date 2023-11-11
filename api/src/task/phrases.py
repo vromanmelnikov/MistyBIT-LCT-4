@@ -1,0 +1,22 @@
+OPERATORS_NOT_FOUND = "Операторы не найдены"    
+
+OBJECTS_NOT_FOUND = "Объекты не найдены"
+OBJECT_NOT_FOUND = "Объект не найден"
+OBJECT_DELETE_SUCCESS = "Объект успешно удален!"
+OBJECT_DELETE_FAILED = "Ошибка удаления объекта"
+OBJECT_ADD_SUCCESS = "Объект успешно добавлен!"
+OBJECT_ADD_FAILED = "Ошибка добавления объекта"
+OBJECT_UPDATE_SUCCESS = "Объект успешно обновлен!"
+OBJECT_UPDATE_FAILED = "Ошибка обновления объекта"
+CONDITION_INVALID = "условие задано некоректно"
+CONDITION_POST_SUCCESS = "условие к задаче успешно добавлено"
+TASKS_DEFINED = "Необходимые задачи определены"
+TASKS_DISTRIBUTIONED = "Задачи распределены"
+TASKS_DISTRIBUTION_FAILED = "Задачи не удалось распределить"
+
+TASK_PROCESSED_SUCCESS = "Задача обработана, занесена в историю"
+TASKS_UPDATED_SUCCESS = "Приоритет задач успешно изменен"
+TASK_ACCEPTED = "Задача успешно принята в работу!"
+TASK_DISTRIBUTED='Вам назначены новые задачи, зайдите в личный кабинет'
+TASK_DELETED_SUCCESS = "Список задач успешно очищен"
+TASK_DELETED_FAILED = "Произошла ошибка при удаление списка задач"

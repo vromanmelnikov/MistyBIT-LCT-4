@@ -1,0 +1,38 @@
+<header class="header">
+  <div class="container header-container">
+    <span>Кабинет менеджера</span>
+    <span class="functionals">
+
+      <!-- <mat-notification></mat-notification> -->
+
+      <button mat-button [matMenuTriggerFor]="notif">
+        <mat-icon aria-hidden="false" aria-label="Example home icon">sms</mat-icon>
+      </button>
+      <mat-menu #notif="matMenu" xPosition="before" class="notification">
+        <p *ngFor="let note of notifications; index as i" class="note-block">
+          <mat-divider *ngIf="i !== 0"></mat-divider>
+          <span>{{note.date_create}}</span>
+          <span>{{note.message}}</span>
+        </p>
+        <p *ngIf="notifications.length === 0"  class="note-block">
+          <span>Нет уведомлений</span>
+        </p>
+      </mat-menu>
+
+      <button mat-button [matMenuTriggerFor]="menu">
+        <mat-icon aria-hidden="false" aria-label="Example home icon">menu</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+
+        <span *ngFor="let item of menuList">
+          <button (click)="item?.action()" *ngIf="item.type == 'action'" mat-menu-item>{{item.viewValue}}</button>
+          <button [disabled]="item.roles?.includes(role.name)" (click)="goToLink(item.path)" *ngIf="item.type == 'link'"
+            mat-menu-item>{{item.viewValue}}</button>
+          <mat-divider *ngIf="item.type == 'devider'"></mat-divider>
+        </span>
+
+      </mat-menu>
+      <span class="profile-icon" (click)="goToCabinet()"></span>
+    </span>
+  </div>
+</header>

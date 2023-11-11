@@ -1,0 +1,45 @@
+<main class="container card">
+  <span class="card-title">Управление персоналом</span>
+
+  <mat-form-field
+    *ngIf="role.name === 'Админ'"
+    appearance="fill"
+    class="type-select"
+  >
+    <mat-label>Выберите тип сотрудника</mat-label>
+    <mat-select [(value)]="currentType">
+      <mat-option *ngFor="let type of employeersTypes" [value]="type.value">
+        {{ type.viewValue }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button
+    mat-raised-button
+    color="primary"
+    class="toggler"
+    (click)="archiveFlag = !archiveFlag"
+  >
+    Архив задач
+  </button>
+
+  <app-employeers-table
+    (add)="add($event)"
+    [role]="role"
+    [allGrades]="allGrades"
+    [allOffices]="allOffices"
+    *ngIf="currentType == employeersTypes[0].value"
+  ></app-employeers-table>
+
+  <app-managers-table
+    (add)="add($event)"
+    [role]="role"
+    [list]="managersList"
+    *ngIf="currentType == employeersTypes[1].value"
+  ></app-managers-table>
+
+  <app-archive
+    [flag]="archiveFlag"
+    (onChange)="onFlagChange($event)"
+  ></app-archive>
+</main>

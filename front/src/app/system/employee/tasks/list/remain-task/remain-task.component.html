@@ -1,0 +1,11 @@
+<mat-expansion-panel
+  (opened)="panelOpenState = true"
+  (closed)="panelOpenState = false"
+>
+  <mat-expansion-panel-header>
+    <mat-panel-title style="font-weight: 500;">{{ item.point.address }}</mat-panel-title>
+  </mat-expansion-panel-header>
+  
+  <p>Задача: {{item.type.name}}</p>
+
+</mat-expansion-panel>

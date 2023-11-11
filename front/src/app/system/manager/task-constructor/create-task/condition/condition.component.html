@@ -1,0 +1,26 @@
+<mat-divider></mat-divider>
+<div class="add-condition">
+  <mat-divider></mat-divider>
+
+  <form [formGroup]="form">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Название условия</mat-label>
+      <input
+        matInput
+        placeholder="Карты и материалы не доставлялись"
+        formControlName="name"
+        (blur)="onBlur($event)"
+      />
+    </mat-form-field>
+  </form>
+
+  <div class="conditions">
+    <app-subcondition
+      *ngFor="let subcond of subconditions; index as i"
+      [index]="i"
+      [subcondition]="subcond"
+      [isAdded]="subcond.isAdded"
+      (onSubconditionAdd)="onSubconditionAdd($event)"
+    ></app-subcondition>
+  </div>
+</div>

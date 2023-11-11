@@ -1,0 +1,55 @@
+<!-- TODO: ДИАЛОГ -->
+
+<div class="current-task container">
+  <div class="card card-p3">
+    <span class="card-title">Текущая задача</span>
+    <div *ngIf="!current">На данный момент нет задач</div>
+    <h1 *ngIf="current">{{ current?.type?.name }}</h1>
+    <p *ngIf="current">{{ current?.point?.address }}</p>
+    <button *ngIf="current" class="button" mat-raised-button color="primary" (click)="goToYaMaps()">
+      Построить маршрут
+    </button>
+  </div>
+
+  <div *ngIf="current" class="card card-p3">
+    <mat-stepper [selectedIndex]="currentIndex" [linear]="false" #stepper (selectionChange)="selectionChange($event)">
+      <mat-step [completed]="isCompleted" [label]="label_go" [editable]="false">
+        <p class="question">Вы выехали на место выполнения задачи?</p>
+        <div class="current-task__btns">
+          <button (click)="acceptTask()" mat-raised-button class="success" matStepperNext>
+            Принять
+          </button>
+          <button (click)="cancelTast()" mat-raised-button color="warn">
+            Есть проблема
+          </button>
+        </div>
+      </mat-step>
+
+      <!-- <mat-step [label]="label_execute" [editable]="false">
+        <p class="question">Вы начали выполнение задачи?</p>
+        <div class="current-task__btns">
+          <button mat-raised-button class="success" matStepperNext>
+            Выполнено
+          </button>
+          <button mat-raised-button color="warn" matStepperNext>
+            Есть проблема
+          </button>
+        </div>
+      </mat-step> -->
+
+      <mat-step [label]="label_finish" [editable]="false">
+        <p class="question">Вы выполнили задачу?</p>
+        <div class="current-task__btns">
+          <button mat-raised-button class="success" (click)="finishTask()" matStepperNext>
+            Выполнено
+          </button>
+          <button  (click)="cancelTast()" mat-raised-button color="warn" >
+            Есть проблема
+          </button>
+        </div>
+
+        <!-- TODO: ОТЗЫВ -->
+      </mat-step>
+    </mat-stepper>
+  </div>
+</div>

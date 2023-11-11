@@ -1,0 +1,16 @@
+<div class="map card">
+  <ya-map
+    #map
+    [center]="[coordTaskNow?.x, coordTaskNow?.y]"
+    [zoom]="12"
+    [state]="{ controls: [] }"
+    (ready)="onMapReady($event)"
+    
+  >
+  
+    <ya-clusterer [options]="{ minClusterSize: 5 }">
+      <!-- <ya-placemark *ngFor="let point of points" [geometry]="[point.lat, point.long]"></ya-placemark> -->
+      <ya-placemark [geometry]="[coordTaskNow?.x, coordTaskNow?.y]" *ngIf="flag"></ya-placemark>
+    </ya-clusterer>
+  </ya-map>
+</div>

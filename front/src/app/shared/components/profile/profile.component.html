@@ -1,0 +1,16 @@
+<div class="block card">
+    <span class="card-title">Персональная информация</span>
+    <app-photo class="photo"></app-photo>
+    <app-info class="info"></app-info>
+</div>
+<div *ngIf="role.name == 'Сотрудник'" class="double-block" style="margin-top: 1.5rem;">
+    <div class="card">
+        <span class="card-title">Мои навыки</span>
+        <app-skills></app-skills>
+    </div>
+    <div class="card current-task">
+        <span class="card-title">Активная задача</span>
+        <!-- <app-current-task></app-current-task> -->
+        <button mat-raised-button color="primary" (click)="goToTasksList()">Перейти к списку задач</button>
+    </div>
+</div>

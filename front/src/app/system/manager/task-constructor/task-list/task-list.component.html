@@ -1,0 +1,3 @@
+<mat-accordion>
+    <app-task-item (onTaskDelete)="onTaskDelete($event)" *ngFor="let item of items" [item]="item" ></app-task-item>
+</mat-accordion>

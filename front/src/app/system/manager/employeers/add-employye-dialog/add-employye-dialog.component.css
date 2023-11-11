@@ -1,0 +1,39 @@
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.current-task {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.button {
+  float: right;
+}
+
+.success {
+  background-color: #4dc404;
+  color: white;
+}
+
+.current-task__btns {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.question {
+  margin: 1rem 0 !important;
+  text-align: center;
+}

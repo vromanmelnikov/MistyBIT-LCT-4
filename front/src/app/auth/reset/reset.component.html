@@ -1,0 +1,7 @@
+<form *ngIf="form" [formGroup]="form">
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Пароль</mat-label>
+        <input matInput type="password" formControlName="password" />
+    </mat-form-field>
+    <button class="field" mat-raised-button color="primary" (click)="reset()">Установить пароль</button>
+</form>

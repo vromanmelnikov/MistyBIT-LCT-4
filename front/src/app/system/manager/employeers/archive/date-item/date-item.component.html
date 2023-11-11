@@ -1,0 +1,4 @@
+<span class="date">{{ dateItem.date }}</span>
+<mat-accordion>
+  <app-item *ngFor="let item of dateItem.list" [item]="item"></app-item>
+</mat-accordion>

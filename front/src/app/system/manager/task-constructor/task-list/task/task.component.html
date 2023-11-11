@@ -1,0 +1,19 @@
+<mat-expansion-panel
+  (opened)="panelOpenState = true"
+  (closed)="panelOpenState = false"
+>
+  <mat-expansion-panel-header>
+    <mat-panel-title> {{item.name}} </mat-panel-title>
+    <mat-panel-description>
+      <!-- Currently I am {{ panelOpenState ? "open" : "closed" }} -->
+    </mat-panel-description>
+  </mat-expansion-panel-header>
+
+  <app-skills [skills]="skills" [type_task_id]="item.id"></app-skills>
+
+  <div class="actions">
+    <button mat-raised-button color="primary">Изменить</button>
+    <button mat-raised-button (click)="deleteTask()" color="warn">Удалить</button>
+  </div>
+  
+</mat-expansion-panel>

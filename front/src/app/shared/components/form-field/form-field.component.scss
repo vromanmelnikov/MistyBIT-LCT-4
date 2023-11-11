@@ -1,0 +1,123 @@
+@import "../../../../styles.scss";
+
+.form-group {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
+.form-group,
+.input-group {
+  width: 100%;
+}
+
+.border {
+  border: 1px solid $color-green;
+}
+
+.label {
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 18px;
+}
+textarea {
+  resize: vertical;
+
+  width: 100%;
+}
+.input-group {
+  color: $color-secondary;
+  transition: $input-transition;
+  background: $color-light;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $input-group-vert-padding $padding-20;
+  border-radius: $input-group-border-radius;
+
+  input,
+  textarea {
+    transition: $input-transition;
+    background: $color-light;
+    border: none;
+    padding: 0;
+    font-weight: $text-font-weight-400;
+    font-size: $input-font-size;
+    line-height: $input-line-height;
+  }
+
+  input {
+    // height: 16px;
+    width: 85%;
+  }
+  textarea::placeholder,
+  input::placeholder {
+    color: $color-secondary;
+  }
+
+  textarea:focus-visible,
+  input:focus-visible {
+    outline: none;
+  }
+}
+
+.input-group:hover {
+  background: $input-group-hover-background;
+  input,
+  textarea {
+    background: $input-group-hover-background;
+  }
+}
+
+.input-group:focus-within {
+  background: $input-group-focus-within-background;
+  input,
+  textarea {
+    background: $input-group-focus-within-background;
+  }
+}
+
+.form-help-text {
+  position: absolute;
+  bottom: -20px;
+  font-size: $form-help-text-font-size;
+  padding-left: $padding-20;
+  text-align: left;
+}
+
+.has-error {
+  .form-help-text {
+    span {
+      color: $warn-color;
+    }
+  }
+
+  textarea,
+  input {
+    border-color: $warn-color !important;
+    color: $warn-color;
+  }
+}
+
+input[type="date"] {
+  background: $color-light;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0;
+}
+
+input[type="date"]::before {
+  content: attr(data-placeholder);
+  width: 100%;
+  color: $color-secondary;
+}
+input[type="date"]:focus::before,
+input[type="date"]:valid::before {
+  display: none;
+}
+
+.button-date-input {
+  cursor: pointer;
+}

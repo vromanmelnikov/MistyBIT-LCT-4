@@ -1,0 +1,34 @@
+.feedback-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.stars {
+    width: 100%;
+    height: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem
+}
+
+.star {
+    height: 100%;
+    cursor: pointer;
+}
+
+.comment {
+    width: 100%;
+}
+
+.actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}

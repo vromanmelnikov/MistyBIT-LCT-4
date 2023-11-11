@@ -1,0 +1,14 @@
+<form *ngIf="form" [formGroup]="form">
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Почта</mat-label>
+    <input matInput placeholder="ivanov@mail.ru" formControlName="email" />
+  </mat-form-field>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Пароль</mat-label>
+    <input matInput type="password" formControlName="password" />
+  </mat-form-field>
+  <p class="recover-link" (click)="sendRecover()">Забыли пароль?</p>
+  <button class="field" mat-raised-button color="primary" (click)="signin()">
+    Сохранить
+  </button>
+</form>

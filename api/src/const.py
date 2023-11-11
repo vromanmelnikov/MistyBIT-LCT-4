@@ -1,0 +1,58 @@
+NAME_ENV_FILE = ".env"
+
+ALL = "/all"
+IMMAGE = "/image"
+
+DEFAULT_LIMIT = 100
+DEFAULT_OFFSET = 0
+VALUE_NOT_LESS = 0
+DEFAULT_COUNT_TAGS = 5
+
+EXPIRES_10_MIN_CACHE_ON_SECONDS = 600
+EXPIRES_HOUR_CACHE_ON_SECONDS = 3600
+EXPIRES_WEEK_CACHE_ON_SECONDS = 604800
+
+REPOSITORY_USERS = "users"
+
+PREFIX_REDIS_CACHE = "fastapi-cache-hack"
+BACKEND_NAME = "Backend MISty"
+VERSION = "0.1.0"
+MAIN_QUEUE_NAME_CELERY = "hack-tasks"
+
+# method
+METHOD_ADD = "add"
+METHOD_GET_BY_ID = "getbyid"
+METHOD_GET_ONE = "getone"
+METHOD_GET_ALL = "getall"
+METHOD_UPDATE = "update"
+METHOD_DELETE = "delete"
+METHOD_RESET = "reset"
+
+REST_API_GET = "get"
+REST_API_POST = "post"
+REST_API_PUT = "put"
+REST_API_DELETE = "delete"
+
+# resource
+RESOURCE_PROFILE = "profile"
+RESOURCE_EMAIL = "email"
+RESOURCE_PASSWORD = "password"
+RESOURCE_TAG_USER = "taguser"
+RESOURCE_EVENT = "event"
+RESOURCE_OFFICE = "office"
+RESOURCE_SKILL = "skill"
+RESOURCE_SKILL_EMPLOYEE = "skillemployee"
+RESOURCE_EMPLOYEE = "employee"
+RESOURCE_POINT_IMAGE = "pointimage"
+RESOURCE_OFFICE_IMAGE = "officeimage"
+RESOURCE_USER_IMAGE = "userimage"
+
+# roles
+ROLE_EMPLOYEE = 1
+ROLE_MANAGER = 2
+ROLE_ADMIN = 3
+
+REPOSITORY_MANAGER = "managers"
+REPOSITORY_EMPLOYEE = "employees"
+
+SUPPORT_SECURITY_OWNER='Поддерживает is_owner'

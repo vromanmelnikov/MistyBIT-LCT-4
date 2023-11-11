@@ -1,0 +1,10 @@
+.actions {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.field {
+    width: 100%;
+}

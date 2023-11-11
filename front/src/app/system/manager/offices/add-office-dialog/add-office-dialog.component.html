@@ -1,0 +1,14 @@
+<h1 mat-dialog-title>Добавление офиса</h1>
+<mat-dialog-content>
+  <form [formGroup]="form" class="form">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Адрес</mat-label>
+      <input matInput placeholder="Иванов" formControlName="address" />
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<div mat-dialog-actions class="actions">
+  <button mat-raised-button color="primary" (click)="onNoClick()">
+    Сохранить
+  </button>
+</div>

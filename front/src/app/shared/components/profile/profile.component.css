@@ -1,0 +1,75 @@
+.block {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.container > * {
+    /* width: 100%; */
+}
+
+.photo {
+    width: calc(40% - .5rem);
+}
+
+.info {
+    width: calc(60% - .5rem);
+}
+
+.double-block {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 1.5rem;
+}
+
+.double-block > .card {
+    width: calc(50% - .75rem);
+}
+
+.current-task  {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+::ng-deep .card-p3 {
+    
+  }
+
+@media (max-width: 991px) {
+    .block {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    .photo {
+        width: 100%;
+    }
+    .info {
+        width: 100%;
+    }
+}
+
+@media (max-width: 990px){
+    .double-block{
+        flex-direction: column;
+        /* margin-right: 65px !important; */
+    }
+    .double-block > .card {
+        width: 100%;
+    }
+}
+
+@media (max-width: 767px) and (min-width: 576px) {
+    .container {
+        width: 540px;
+    }
+}
+
+@media (max-width: 575px) and (min-width: 0px) {
+    .container > * {
+        width: 100%;
+    }
+}

@@ -1,0 +1,21 @@
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+main > *:not(.toggler) {
+    width: 100%;
+}
+
+.type-select {
+    width: 100%;
+}
+
+.toggler {
+    width: fit-content;
+    float:right;
+    /* margin-bottom: .5rem; */
+}

@@ -1,0 +1,37 @@
+<h1 mat-dialog-title>Добавление данных</h1>
+<mat-dialog-content>
+  <form [formGroup]="form" class="form">
+    <mat-form-field *ngIf="this.data.item.quantity_card === 0 && this.data.item.is_delivered_card === false">
+      <mat-label>Карты доставлены</mat-label>
+      <mat-select formControlName="is_delivered_card">
+        <mat-option [value]="true">Да</mat-option>
+        <mat-option [value]="false">Нет</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Кол-во заявок</mat-label>
+      <input
+        matInput
+        placeholder="3"
+        formControlName="quantity_requests"
+        type="number"
+        min="0"
+      />
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Кол-во выданных карт</mat-label>
+      <input
+        matInput
+        placeholder="3"
+        formControlName="quantity_card"
+        type="number"
+        min="0"
+      />
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<div mat-dialog-actions class="actions">
+  <button mat-raised-button color="primary" (click)="onNoClick()">
+    Добавить
+  </button>
+</div>

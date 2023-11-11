@@ -1,0 +1,6 @@
+fastapi
+uvicorn[standard]
+email-validator
+Jinja2
+gunicorn
+python-dotenv

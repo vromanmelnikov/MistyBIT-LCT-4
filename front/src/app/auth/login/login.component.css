@@ -1,0 +1,13 @@
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.recover-link {
+    cursor: pointer;
+    text-align: center;
+}
+
+.recover-link:hover {
+    color: #7b1fa2;
+}

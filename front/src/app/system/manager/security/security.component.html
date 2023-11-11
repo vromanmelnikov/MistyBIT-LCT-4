@@ -1,0 +1,54 @@
+<main class="container card">
+  <span class="card-title">Управление безопасностью</span>
+
+  <mat-accordion>
+    <mat-expansion-panel *ngFor="let method of methods">
+      <mat-expansion-panel-header (click)="openPolicies(method)">
+        <mat-panel-title style="font-weight: 500;">
+          Метод: {{method.description}}
+        </mat-panel-title>
+        <mat-panel-description></mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <div *ngIf="method.policy">
+        <mat-form-field class="description-policy">
+          <mat-label>Описание политики</mat-label>
+          <input matInput [(ngModel)]="method.policy.description">
+        </mat-form-field>
+
+        <span>Доступ имеют роли:</span>
+        <ul>
+          <li *ngFor="let role of method.policy.allRoles">
+            <mat-checkbox [(ngModel)]="role.checked" (click)="resetSlideToggle(role)">
+              {{role.name}}
+            </mat-checkbox>
+
+            <mat-slide-toggle *ngIf="method.is_owner" [disabled]="!role.checked" [(ngModel)]="role.isOwner">
+              Доступно только "владельцу"
+            </mat-slide-toggle>
+          </li>
+        </ul>
+
+        <button (click)="savePolicy(method)" mat-raised-button color="primary" class="toggler">
+          Сохранить
+        </button>
+      </div>
+
+      <div *ngIf="!method.policy">
+        Загрузка политики...
+      </div>
+    </mat-expansion-panel>
+
+    <!-- <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Self aware panel
+        </mat-panel-title>
+        <mat-panel-description>
+          Currently I am {{panelOpenState ? 'open' : 'closed'}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <p>I'm visible because I am open</p>
+    </mat-expansion-panel> -->
+  </mat-accordion>
+</main>

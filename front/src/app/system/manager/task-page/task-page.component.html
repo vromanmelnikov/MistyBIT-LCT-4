@@ -1,0 +1,109 @@
+<main class="card">
+    <span class="card-title">Просмотр задач</span>
+    <div class="filter_block">
+        <mat-accordion>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title style="font-weight: 500;">Фильтр</mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="search_block">
+                    <form [formGroup]="form">
+                        <mat-form-field>
+                            <mat-label>Тип задачи</mat-label>
+                            <input [type]="typeInput.type" matInput [formControl]="typeInput.formControl"
+                                [matAutocomplete]="autotype">
+                            <mat-autocomplete autoActiveFirstOption #autotype="matAutocomplete">
+                                <ng-container *ngFor="let option of typeInput.values | async">
+                                    <mat-option [value]="option.name">
+                                        {{option.name}}
+                                    </mat-option>
+                                    <mat-divider></mat-divider>
+                                </ng-container>
+                            </mat-autocomplete>
+                            <mat-icon matSuffix class="option_icon">{{typeInput.icon}}</mat-icon>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Точка</mat-label>
+                            <input [type]="pointInput.type" matInput [formControl]="pointInput.formControl"
+                                [matAutocomplete]="autopoint">
+                            <mat-autocomplete autoActiveFirstOption #autopoint="matAutocomplete">
+                                <ng-container *ngFor="let option of pointInput.values | async">
+                                    <mat-option [value]="option.address">
+                                        {{option.address}}
+                                    </mat-option>
+                                    <mat-divider></mat-divider>
+                                </ng-container>
+                            </mat-autocomplete>
+                            <mat-icon matSuffix class="option_icon">{{pointInput.icon}}</mat-icon>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Статус</mat-label>
+                            <input [type]="statusInput.type" matInput [formControl]="statusInput.formControl"
+                                [matAutocomplete]="autostat">
+                            <mat-autocomplete autoActiveFirstOption #autostat="matAutocomplete">
+                                <ng-container *ngFor="let option of statusInput.values | async">
+                                    <mat-option [value]="option.name">
+                                        {{option.name}}
+                                    </mat-option>
+                                    <mat-divider></mat-divider>
+                                </ng-container>
+                            </mat-autocomplete>
+                            <mat-icon matSuffix class="option_icon">{{statusInput.icon}}</mat-icon>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Приоритет</mat-label>
+                            <input [type]="priorityInput.type" matInput [formControl]="priorityInput.formControl"
+                                [matAutocomplete]="autoprior">
+                            <mat-autocomplete autoActiveFirstOption #autoprior="matAutocomplete">
+                                <ng-container *ngFor="let option of priorityInput.values | async">
+                                    <mat-option [value]="option.name">
+                                        {{option.name}}
+                                    </mat-option>
+                                    <mat-divider></mat-divider>
+                                </ng-container>
+                            </mat-autocomplete>
+                            <mat-icon matSuffix class="option_icon">{{priorityInput.icon}}</mat-icon>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <mat-label>Сотрудник</mat-label>
+                            <input [type]="employeeInput.type" matInput [formControl]="employeeInput.formControl"
+                                [matAutocomplete]="autoempl">
+                            <mat-autocomplete autoActiveFirstOption #autoempl="matAutocomplete">
+                                <ng-container *ngFor="let option of employeeInput.values | async">
+                                    <mat-option [value]="option.name">
+                                        {{option.name}}
+                                    </mat-option>
+                                    <mat-divider></mat-divider>
+                                </ng-container>
+                            </mat-autocomplete>
+                            <mat-icon matSuffix class="option_icon">{{employeeInput.icon}}</mat-icon>
+                        </mat-form-field>
+                    </form>
+                    <button mat-raised-button color="primary" class="button_search"
+                        (click)="applyFilter()">Применить</button>
+
+                </div>
+            </mat-expansion-panel>
+        </mat-accordion>
+        <button mat-raised-button color="primary" class="button_filter" (click)="defineTask()">Распределить</button>
+    </div>
+    <div class="card_block">
+        <ng-contaner *ngFor="let t of tasks">
+            <mat-card>
+                <mat-card-title>{{t.type.name}}</mat-card-title>
+                <mat-card-content>
+                    <div><strong>Адрес: </strong>{{t.point.address}}</div>
+                    <div><strong>Статус: </strong>{{getStatusTask(t.status_id)}}</div>
+                    <div *ngIf="t.employee"><strong>Исполнитель: </strong>
+                        {{t.employee.user.lastname}} {{t.employee.user.firstname}} {{t.employee.user.patronymic}}</div>
+                    <div *ngIf="t.employee"><strong>Грейд: </strong>
+                        {{t.employee.grade.name}}</div>
+                </mat-card-content>
+            </mat-card>
+        </ng-contaner>
+
+    </div>
+    <div class="actions">
+        <button mat-raised-button color="primary" (click)="download()">Получить отчет</button>
+    </div>
+</main>

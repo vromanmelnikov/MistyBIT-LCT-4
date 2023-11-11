@@ -1,0 +1,31 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.profile-icon {
+  margin: 0 1rem;
+}
+
+::ng-deep .notification {
+  width: 250px;
+  max-height: 200px !important;
+  height: 200px !important;
+  padding: 0.25rem 0;
+  box-sizing: border-box;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 0.25rem;
+}
+
+.note-block {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  gap: .5rem;
+}
+.note-block > span {
+  margin: 0 1rem;
+  font-size: .8rem;
+}

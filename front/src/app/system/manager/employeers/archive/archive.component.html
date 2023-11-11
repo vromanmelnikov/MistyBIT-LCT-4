@@ -1,0 +1,25 @@
+<div class="backdrop" [ngClass]="{'active-backdrop': flag}" (click)="clickBackdrop($event)" id="close-target">
+  <section class="content" [ngClass]="{'active-content': flag}">
+    <button mat-raised-button (click)="flag = !flag"><mat-icon>close</mat-icon></button>
+    <div class="date-container" *ngFor="let dateItem of list | groupByDate">
+      <span class="date_pipe">{{dateItem.key| date:'dd/MM/yyyy'}}</span>
+      <ng-container *ngFor="let l of dateItem.value">
+        <mat-accordion>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title style="font-weight: 500;">{{ l.point.address }}</mat-panel-title>
+
+            </mat-expansion-panel-header>
+            <p><strong>Задача: </strong>{{l.type.name}}</p>
+            <p><strong>Исполнитель: </strong>{{l.employee?.id.firstname}} {{l.employee?.id.lastname}} {{l.employee?.id.patronymic}}</p>
+            <span class="stars">
+              <img *ngFor="let item of createFullStar(l.feedback_value)" class="star" src="../../../../../assets/fulled_star.png" />
+              <img *ngFor="let item of createStar(l.feedback_value)" class="star" src="../../../../../assets/star.png" />
+            </span>
+            <p><strong>Статус: </strong><span [ngStyle]="l.status_id == 2 && {'color': 'red'} || {'color': 'green'}">{{getStatusTask(l.status_id)}}</span></p>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </ng-container>
+    </div>
+  </section>
+</div>

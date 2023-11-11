@@ -1,0 +1,22 @@
+<div class="form-group" [ngClass]="{
+    'has-error': formConrol?.invalid && formConrol?.touched
+  }">
+  <div class="label" *ngIf="label">{{ label }}</div>
+  <div class="input-group" [ngStyle]="style()">
+    <input [disabled]="disable" *ngIf="type == 'date'" [formControl]="formConrol" class="form-control" [ngClass]="getClass()" [value]="value"
+      [type]="type" [placeholder]="placeholder" (input)="onInput($event)" (blur)="onTouched()"
+      attr.data-placeholder="{{placeholder}}" required aria-required="true" />
+
+    <input [readonly]="disable" *ngIf="type != 'date' && type != 'textarea'" [formControl]="formConrol"
+      class="form-control" [value]="value" [type]="type" [placeholder]="placeholder" (input)="onInput($event)"
+      (blur)="onTouched()" />
+
+    <textarea rows="5" [readonly]="disable" *ngIf="type == 'textarea'" [formControl]="formConrol" class="form-control"
+      [value]="value" [placeholder]="placeholder" (input)="onInput($event)" (blur)="onTouched()"></textarea>
+    <mat-icon [ngClass]="{'button-date-input': type == 'date'}" (click)="onClick()" [fontIcon]="icon">
+    </mat-icon>
+  </div>
+  <div class="form-help-text" *ngIf="formConrol?.invalid && formConrol?.touched">
+    <span>{{ messageErorFunc() }}</span>
+  </div>
+</div>

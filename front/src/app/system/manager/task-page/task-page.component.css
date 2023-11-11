@@ -1,0 +1,61 @@
+.card{
+    
+    
+}
+
+.card_block{
+    display: flex;
+    flex-direction: column;
+    row-gap: 2px;
+    height: 60vh;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+mat-card{
+ margin:  5px;
+     
+}
+mat-card-title{
+    font-size: 16px;
+} 
+strong{
+    font-weight: 600;
+}
+.filter_block{
+    margin-bottom: 10px;
+}
+.search_block{
+    display: flex;
+    flex-direction: column;
+}
+mat-form-field{
+    width: 100%;
+}
+.filter_block{
+    display: flex;
+    align-items: flex-start
+    
+}
+.button_filter{
+    width: 200px;
+    height: 48px;
+}
+.button_search{
+    width: 100%;
+}
+
+@media (max-width: 990px){
+    .filter_block{
+        flex-direction: column-reverse;
+        align-items: end;
+        row-gap: 10px;
+    }
+    .button_filter{
+        width: 150px;
+        height: auto
+    }
+}
+
+.actions {
+    width: 100%;
+}

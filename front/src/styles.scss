@@ -1,0 +1,124 @@
+$color-light: #fff;
+$color-dark: #23000d;
+$color-primary: #b30a3f;
+$warn-color: #f44336;
+$color-secondary: #a6a6a6;
+$color-green: #079368;
+$form-help-text-font-size: 12px;
+$color-ligtn-green: #dff4f1;
+$card-margin-bottom: 20px;
+$padding: 2rem;
+$border-radius: 5px;
+$column-gap: 10px;
+$row-gap: 20px;
+$input-group-hover-background: #ececec;
+$input-group-focus-within-background: #dcdbdb;
+$card-vert-padding: 30px;
+$text-font-weight-500: 500;
+$text-font-weight-400: 400;
+$input-transition: all 0.3s ease-out;
+$padding-20: 20px;
+$input-group-border-radius: 50px;
+$avatar-img-border-radius: 50%;
+$avatar-img-width: 40px;
+$block-width: min(95%, 350px);
+$input-font-size: 13px;
+$input-line-height: 17px;
+$input-group-vert-padding: 13px;
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    font-family: 'Montserrat', sans-serif;
+    /* color: white */
+}
+
+html,
+body {
+    // height: 100%;
+}
+
+body {
+    margin: 0;
+    margin-bottom: 230px;
+    /* font-family: Roboto, "Helvetica Neue", sans-serif; */
+    background-color: #f4e5f9;
+}
+
+p, h1, h2 {
+    margin-bottom: .5rem !important;
+}
+
+.mat-card:not([class*=mat-elevation-z]) {
+    box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.25) !important;
+}
+
+.card {
+    box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.25) !important;
+    padding: 2rem;
+    border-radius: .25rem;
+    position: relative;
+    background-color: white;
+    box-sizing: border-box;
+}
+
+.card-p3 {
+    padding: 1.5rem;
+}
+
+.card-title {
+    width: fit-content !important;
+    position: absolute;
+    top: -.5rem;
+    left: -.5rem;
+    background-color: #7b1fa2;
+    color: white;
+    padding: 0.25rem .425rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    border-radius: .5rem;
+}
+
+.mat-raised-button.mat-primary {
+    background-color: #7b1fa2;
+}
+
+.mat-stroked-button.mat-primary {
+    color: #7b1fa2
+}
+
+.mat-chip.mat-standard-chip {
+    background-color: #7b1fa2;
+    color: white;
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Old versions of Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+}
+
+.mat-chip.mat-standard-chip .mat-chip-remove {
+    color: white;
+}
+
+.mat-form-field-appearance-fill .mat-form-field-flex {
+    background-color: #7b1fa21b;
+}
+
+.mat-form-field-ripple {
+    background-color: #7b1fa2;
+}
+
+.mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
+    color:#7b1fa2
+}
+
+.mat-form-field-appearance-standard .mat-form-field-flex {
+    padding-top: 0 !important;
+}

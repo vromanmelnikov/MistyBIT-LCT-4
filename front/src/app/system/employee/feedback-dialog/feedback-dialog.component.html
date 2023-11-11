@@ -1,0 +1,18 @@
+<h1 mat-dialog-title>Оставьте отзыв о выполнении задачи</h1>
+<div mat-dialog-content class="feedback-form">
+  <div class="stars">
+    <img class="star" *ngFor="let star of stars; index as i" [src]="
+        star == false
+          ? '../../../../assets/star.png'
+          : '../../../../assets/fulled_star.png'
+      " (click)="clickOnStar(i)" />
+  </div>
+  <mat-form-field class="example-full-width comment" appearance="fill">
+    <mat-label>Комментарий</mat-label>
+    <textarea matInput placeholder="Проблем не возникло. Сотрудникам легко далось обучение..."
+      [(ngModel)]="comment"></textarea>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions class="actions">
+  <button mat-raised-button color="primary" (click)="onNoClick()">Отправить отзыв</button>
+</div>

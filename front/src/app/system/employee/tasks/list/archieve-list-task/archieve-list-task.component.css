@@ -1,0 +1,64 @@
+.backdrop {
+    width: 0;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0);
+    z-index: 1000;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    transition: width 0.5s;
+  }
+  
+  .active-backdrop {
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.375);
+    transition: background-color 0.5s;
+  }
+  
+  .content {
+    width: 0;
+    height: 100%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.5rem;
+    box-sizing: border-box;
+    overflow: hidden;
+    position: absolute;
+    right: -3rem;
+    transition: width 0.5s, padding 1s;
+    overflow: scroll
+  }
+  
+  .active-content {
+    right: 0;
+    width: 40% !important;
+    transition: width 0.5s;
+  }
+  
+  .date-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+  }
+  
+  .date_pipe{
+    font-size: 18px;
+  }
+  
+  .stars {
+    display: flex;
+    flex-direction: row;
+    gap: .2rem;
+    align-items: center;
+  }
+  
+  .star {
+    width: 1.5rem;
+  }

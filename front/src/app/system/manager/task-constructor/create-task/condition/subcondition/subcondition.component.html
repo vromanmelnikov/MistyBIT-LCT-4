@@ -1,0 +1,140 @@
+<div class="card subconditions-block">
+  <form [formGroup]="typeForm">
+    <section class="conditions-type-section">
+      <label class="example-margin">Тип выражения:</label>
+      <mat-radio-group
+        class="conditions-type"
+        formControlName="type"
+        (change)="onTypeChange($event)"
+      >
+        <mat-radio-button class="example-margin" value="static">
+          Параметр точки
+        </mat-radio-button>
+        <mat-radio-button class="example-margin" value="condition">
+          Выражение
+        </mat-radio-button>
+      </mat-radio-group>
+    </section>
+  </form>
+
+  <form
+    *ngIf="selectedType === 'condition'"
+    class="conditions-field condition"
+    [formGroup]="conditionForm"
+  >
+    <mat-form-field appearance="fill">
+      <mat-label>Тип</mat-label>
+      <mat-select formControlName="type">
+        <mat-option
+          *ngFor="let type of conditionTypes"
+          value="{{ getTypeValue(type) }}"
+        >
+          {{ type.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Первый аргумент</mat-label>
+      <mat-select formControlName="arg_1" (selectionChange)="onConditionParam_1_Change($event)">
+        <mat-option
+          *ngFor="let param of conditionParams_1"
+          value="{{ getTypeValue(param) }}"
+        >
+          {{ param.ru }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Второй аргумент</mat-label>
+      <mat-select formControlName="arg_2">
+        <mat-option
+          *ngFor="let param of conditionParams_2"
+          value="{{ getTypeValue(param) }}"
+        >
+          {{ param.ru }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Тип результата</mat-label>
+      <mat-select formControlName="resultType">
+        <mat-option
+          *ngFor="let type of conditionResultTypes"
+          value="{{ getTypeValue(type) }}"
+        >
+          {{ type.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Результат</mat-label>
+      <input matInput placeholder="" type="number" formControlName="result" />
+    </mat-form-field>
+  </form>
+
+  <!-- блок с параметрами точек -->
+  <form
+    *ngIf="selectedType === 'static'"
+    class="conditions-field"
+    [formGroup]="staticForm"
+  >
+    <mat-form-field appearance="fill">
+      <mat-label>Параметр точки</mat-label>
+      <mat-select
+        formControlName="type"
+        (selectionChange)="onPointParamChange($event)"
+      >
+        <mat-option
+          *ngFor="let param of pointParams"
+          value="{{ getTypeValue(param) }}"
+        >
+          {{ param.ru }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field
+      class="example-full-width"
+      appearance="fill"
+      *ngIf="pointConditionType && pointConditionType == 'binary'"
+    >
+      <mat-label>Результат</mat-label>
+      <mat-select formControlName="binaryResult">
+        <mat-option value="true"> Да </mat-option>
+        <mat-option value="false"> Нет </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field
+      *ngIf="pointConditionType && pointConditionType != 'binary'"
+      appearance="fill"
+    >
+      <mat-label>Тип выражения</mat-label>
+      <mat-select formControlName="conditionType">
+        <mat-option
+          *ngFor="let param of pointConditionTypes"
+          value="{{ getTypeValue(param) }}"
+        >
+          {{ param.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field
+      class="example-full-width"
+      appearance="fill"
+      *ngIf="pointConditionType && pointConditionType != 'binary'"
+    >
+      <mat-label>Результат</mat-label>
+      <input matInput placeholder="" formControlName="result" type="number" />
+    </mat-form-field>
+    <mat-form-field appearance="fill" *ngIf="pointConditionType == 'date'">
+      <mat-label>Choose a date</mat-label>
+      <input matInput [matDatepicker]="picker" />
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </form>
+
+  <button mat-raised-button color="primary" (click)="addSubCondition()">
+    {{ isAdded === false ? "Сохранить подусловие" : "Изменить подусловие" }}
+  </button>
+</div>

@@ -1,0 +1,27 @@
+<section class="card">
+  <span class="card-title">Задачи</span>
+  <mat-accordion class="list">
+    <ng-container *ngIf="checkTasks(true)">
+      <ng-container *ngFor="let item of remainsList first as isFirst">
+        <app-remain-task *ngIf="!isFirst" [item]="item"></app-remain-task>
+      </ng-container>
+    </ng-container>
+    <span *ngIf="!checkTasks(true)">Текущих задач нет</span>
+
+    <mat-divider class="devider"></mat-divider>
+    <button
+    mat-raised-button
+    color="primary"
+    class="toggler"
+    (click)="archiveFlag = !archiveFlag"
+  >
+    Архив задач
+  </button>
+    <app-archieve-list-task [flag]="archiveFlag"
+    (onChange)="onFlagChange($event)"></app-archieve-list-task>
+    <!-- <ng-container *ngIf="checkTasks(false)">
+      <app-completed-task *ngFor="let item of completedList" [item]="item"></app-completed-task>
+    </ng-container>
+    <span *ngIf="!checkTasks(false)">Задач в истории нет</span> -->
+  </mat-accordion>
+</section>
