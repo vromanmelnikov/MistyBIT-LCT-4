@@ -1,0 +1,150 @@
+version: "3.6"
+
+services:
+  front:
+    image: front
+    build: ./front
+    container_name: front
+    restart: always
+    networks:
+      - microservices
+    ports:
+      - 4200:4200
+
+  proxy_service:
+    image: proxy_service
+    build: ./ng
+    container_name: proxy_service
+    volumes:
+      - ./ng/nginx.conf:/etc/nginx.conf
+    networks:
+      - microservices
+    ports:
+      - 80:80
+
+  redis_service:
+    image: redis:latest
+    container_name: redis_service
+    networks:
+      - microservices
+    ports:
+      - "6379:6379"
+    expose:
+      - 6379
+
+  postgres_db_service:
+      image: postgres:14
+      env_file:
+      - .env
+      container_name: postgres_db_service
+      volumes:
+        - .:/docker-entrypoint-initdb.d
+      ports:
+        - "5432:5432"
+      expose:
+        - 5432
+      networks:
+        - microservices
+
+  api_service:
+    image: api_service
+    build: ./api
+    container_name: api_service
+    restart: always
+    env_file: 
+      - .env
+    ports:
+      - "8000:8000"
+    expose:
+      - 8000
+    depends_on:
+      - postgres_db_service
+      - redis_service
+    networks:
+      - microservices
+
+  mailer_service:
+    image: mailer_service
+    build: ./mailer
+    container_name: mailer_service
+    restart: always
+    env_file: 
+      - mail.env
+    ports:
+      - "8002:8002"
+    expose:
+      - 8002
+    networks:
+      - microservices
+
+  upload_file_service:
+    image: upload_file_service
+    build: ./upload_files
+    container_name: upload_file_service
+    restart: always
+    volumes:
+        - .:/docker-entrypoint-initdb.d
+    env_file: 
+      - uf.env
+    ports:
+      - "8005:8005"
+    expose:
+      - 8005
+    networks:
+      - microservices
+
+  celery_service:
+    image: celery_service
+    build:
+      context: ./api
+      dockerfile: Dockerfile.celery
+    env_file: .env
+    container_name: celery_service
+    depends_on:
+      - redis_service
+    networks:
+      - microservices
+
+  flower_service:
+    image: flower_service
+    build:
+      context: ./api
+      dockerfile: Dockerfile.flower
+    container_name: flower_service
+    env_file: .env
+    depends_on:
+      - redis_service
+      - celery_service
+    networks:
+      - microservices
+    ports:
+      - 5555:5555
+
+  beat_service:
+    image: beat_service
+    build:
+      context: ./api
+      dockerfile: Dockerfile.beat
+    env_file: .env
+    container_name: beat_service
+    depends_on:
+      - redis_service
+    networks:
+      - microservices
+  
+  bot_service:
+    image: bot_service
+    build:
+      context: ./bot
+      dockerfile: Dockerfile
+    container_name: bot_service
+    depends_on:
+      - api_service
+    networks:
+      - microservices
+
+networks:
+  microservices:
+    driver: bridge
+
+  
